@@ -14,8 +14,12 @@ class CreateCarPilotTable extends Migration
     public function up()
     {
         Schema::create('car_pilot', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table -> id();
+            
+            $table -> bigInteger('car_id') -> unsigned() -> index();
+            $table -> bigInteger('pilot_id') -> unsigned() -> index();
+
+            $table -> timestamps();
         });
     }
 
