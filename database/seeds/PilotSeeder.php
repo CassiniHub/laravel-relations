@@ -2,6 +2,9 @@
 
 use Illuminate\Database\Seeder;
 
+use App\Pilot;
+use App\Car;
+
 class PilotSeeder extends Seeder
 {
     /**
@@ -11,6 +14,13 @@ class PilotSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Pilot::class, 100) -> create()
+                -> each(function($pilot){
+                $cars = Car::inRandomOrder()
+                        -> limit(10)
+                        -> get();
+                $pilot -> cars() -> attach($cars);
+                $pilot -> save();
+                });
     }
 }
