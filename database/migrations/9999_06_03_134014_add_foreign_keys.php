@@ -14,18 +14,20 @@ class AddForeignKeys extends Migration
     public function up()
     {
         Schema::table('cars', function (Blueprint $table) {
-            $table -> foreign('brand_id', 'carbrand')
+            $table -> foreign('brand_id')
                    -> references('id')
                    -> on('brands');
         });
 
         Schema::table('car_pilot', function (Blueprint $table) {
-            $table -> foreign('car_id', 'carpilot')
+            $table -> foreign('car_id')
                    -> references('id')
-                   -> on('cars');
-            $table -> foreign('pilot_id', 'pilotcar')
+                   -> on('cars')
+                   -> onDelete('cascade');
+            $table -> foreign('pilot_id')
                    -> references('id')
-                   -> on('pilots');
+                   -> on('pilots')
+                   -> onDelete('cascade');
         });
     }
 
@@ -37,12 +39,12 @@ class AddForeignKeys extends Migration
     public function down()
     {
         Schema::table('cars', function (Blueprint $table) {
-            $table -> dropForeign('brand_id');
+            $table -> dropForeign(['brand_id']);
         });
         
         Schema::table('car_pilot', function (Blueprint $table) {
-            $table -> dropForeign('car_id');
-            $table -> dropForeign('pilot_id');
+            $table -> dropForeign(['car_id']);
+            $table -> dropForeign(['pilot_id']);
         });
     }
 }

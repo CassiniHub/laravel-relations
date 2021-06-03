@@ -5,8 +5,8 @@
 use App\Brand;
 use Faker\Generator as Faker;
 
-$factory->define(Brand::class, function (Faker $faker) {
+$factory -> define(Brand::class, function (Faker $faker) {
     return [
-        //
+        
     ];
 });
