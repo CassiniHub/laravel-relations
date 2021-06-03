@@ -46,10 +46,8 @@ class PilotController extends Controller
      */
     public function show(Pilot $pilot)
     {
-        $singlePilot = Pilot::findOrFail($pilot);
-        
         return view('pages.pilots.show', compact(
-            'singlePilot'
+            'pilot'
         ));
     }
 
