@@ -20,5 +20,5 @@ Route::get('/', function () {
 Route::resources([
     'brands' => 'BrandController',
     'cars' => 'CarController',
-    'pilot' => 'PilotController',
+    'pilots' => 'PilotController',
 ]);
